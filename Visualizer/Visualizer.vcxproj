@@ -129,10 +129,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="src\Common\Utils.h" />
+    <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\Core\WindowClass.h" />
+    <ClInclude Include="src\Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="src\Common\Utils.cpp" />
+    <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Core\WindowClass.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
