@@ -1,7 +1,6 @@
-#include <Test.h>
+#include <Visualizer.h>
 
 int main()
 {
-	Test::HelloWorld();
 	return 0;
 }
