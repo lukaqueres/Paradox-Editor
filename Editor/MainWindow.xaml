@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="25*"/>
+			<ColumnDefinition Width="50*"/>
+			<ColumnDefinition Width="25*"/>
+		</Grid.ColumnDefinitions>
+		<TabControl Grid.Column="3" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch">
+			<TabItem Header="Map">
+				<Grid Background="#FFE5E5E5"/>
+			</TabItem>
+			<TabItem Header="Empires">
+				<Grid Background="#FFE5E5E5"/>
+			</TabItem>
+			<TabItem Header="Species">
+				<Grid Background="#FFE5E5E5"/>
+			</TabItem>
+		</TabControl>
+		<ToolBarPanel/>
 
-    </Grid>
+	</Grid>
 </Window>
