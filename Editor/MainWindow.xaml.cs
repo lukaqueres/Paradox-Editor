@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Editor.Visualizer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Editor
         public MainWindow()
         {
             InitializeComponent();
+
+            VisualizerApi.ShowMessageBox();
         }
     }
 }
