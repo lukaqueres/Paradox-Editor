@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,18 +30,41 @@ namespace Editor
             VisualizerApi.ShowMessageBox();
         }
 
-        private void upload_save_Click(object sender, RoutedEventArgs e)
+        private async void upload_save_Click(object sender, RoutedEventArgs e)
         {
 			OpenFileDialog fileDialog = new OpenFileDialog();
 			fileDialog.DefaultExt = ".txt"; // Required file extension 
-			fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
+            // fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
 
-			if (fileDialog.ShowDialog() == true)
+            if (fileDialog.ShowDialog() == true)
 			{
-				System.IO.StreamReader sr = new System.IO.StreamReader(fileDialog.FileName);
-				MessageBox.Show(sr.ReadToEnd());
-				sr.Close();
+				// System.IO.StreamReader sr = new System.IO.StreamReader(fileDialog.FileName);
+				string content = await ReadTextAsync(fileDialog.FileName);
+				MessageBox.Show(content);
+				// sr.Close();
 			}
 		}
-    }
+
+
+		async Task<string> ReadTextAsync(string filePath)
+		{
+			using var sourceStream =
+				new FileStream(
+					filePath,
+					FileMode.Open, FileAccess.Read, FileShare.Read,
+					bufferSize: 4096, useAsync: true);
+
+			var sb = new StringBuilder();
+
+			byte[] buffer = new byte[0x1000];
+			int numRead;
+			while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+			{
+				string text = Encoding.ASCII.GetString(buffer, 0, numRead);
+				sb.Append(text);
+			}
+
+			return sb.ToString();
+		}
+	}
 }
