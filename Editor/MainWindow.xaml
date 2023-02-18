@@ -27,7 +27,9 @@
 				<Grid Background="#FFE5E5E5"/>
 			</TabItem>
 		</TabControl>
-		<ToolBarPanel/>
+		<ToolBarPanel>
+			<Button x:Name="upload_save" Content="Upload save file" Click="upload_save_Click"/>
+		</ToolBarPanel>
 		<Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Margin="0,0,0,207"/>
 
 	</Grid>

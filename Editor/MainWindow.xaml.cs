@@ -1,4 +1,5 @@
 ﻿using Editor.Visualizer;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,19 @@ namespace Editor
 
             VisualizerApi.ShowMessageBox();
         }
+
+        private void upload_save_Click(object sender, RoutedEventArgs e)
+        {
+			OpenFileDialog fileDialog = new OpenFileDialog();
+			fileDialog.DefaultExt = ".txt"; // Required file extension 
+			fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
+
+			if (fileDialog.ShowDialog() == true)
+			{
+				System.IO.StreamReader sr = new System.IO.StreamReader(fileDialog.FileName);
+				MessageBox.Show(sr.ReadToEnd());
+				sr.Close();
+			}
+		}
     }
 }
